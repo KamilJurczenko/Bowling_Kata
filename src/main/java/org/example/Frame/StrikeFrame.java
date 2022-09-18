@@ -1,9 +1,15 @@
 package org.example.Frame;
 
+import org.example.BowlingGame;
+
 public class StrikeFrame extends Frame{
 
-    @Override
-    public void setScore(int score){
+    public StrikeFrame() {
+        addRoll(10);
+    }
 
+    @Override
+    public void setScore(){
+        score += rolls.get(0) + BowlingGame.rolls[firstRollIndex + 1] + BowlingGame.rolls[firstRollIndex + 2];
     }
 }

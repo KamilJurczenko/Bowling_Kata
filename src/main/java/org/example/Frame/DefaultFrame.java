@@ -2,8 +2,13 @@ package org.example.Frame;
 
 public class DefaultFrame extends Frame{
 
-    @Override
-    public void setScore(int score){
+    public DefaultFrame(int firstRoll, int secondRoll) {
+        addRoll(firstRoll);
+        addRoll(secondRoll);
+    }
 
+    @Override
+    public void setScore(){
+        score += rolls.get(0) + rolls.get(1);
     }
 }
