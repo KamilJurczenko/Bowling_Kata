@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Frame.Frame;
+
 // plays a game (line)
 // each has ten frames (turns)
 // each frame has two tries to knock down all pins
@@ -8,34 +10,37 @@ package org.example;
 // if second try all pins -> spare, score = 10 + next roll
 // if spare/strike on tenth frame -> additional throw
 //-----------------------------------
-// We will not check for valid rolls.
 // We will not check for correct number of rolls and frames.
 // We will not provide scores for intermediate frames!
 public class BowlingGame {
 
     // Int List for memorizing spares/strike frames and total score
     public Frame frames[];
-    private int frameCount;
 
-    private int rolls[];
-    private int rollCount;
-
-    private int bonusRolls[];
-    private int bonusRollsCount;
+    public static int rolls[];
+    public static int rollCount;
 
     public BowlingGame() {
-        frameCount = 0;
-        bonusRollsCount = 0;
         rollCount = 0;
         rolls = new int[21];
-        bonusRolls = new int[2];
         frames = new Frame[10];
     }
 
-    // collects raw score
-    public void roll(int numPins){
-        rolls[rollCount] = numPins;
-        rollCount++;
+    // We will not check for valid rolls.
+    public void rollSpare(int firstPinNum, int secondPinNum){
+
+    }
+
+    public void rollStrike(){
+
+    }
+
+    public void rollDefault(int firstPinNum, int secondPinNum){
+
+    }
+
+    public void rollBonus(int pinNum){
+
     }
 
     // game score = total score of all frames

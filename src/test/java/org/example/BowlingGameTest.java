@@ -1,45 +1,48 @@
 package org.example;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class BowlingGameTest {
 
-    private int allRollsEq(int pinNum, int numRolls){
-        BowlingGame bowlingGame = new BowlingGame();
-        for(int i = 0; i < numRolls; i++)
-            bowlingGame.roll(pinNum);
-        return bowlingGame.getScore();
-    }
-
-    private int allRollsNotEq(int firstPinNum, int secondPinNum, int numFrames){
-        BowlingGame bowlingGame = new BowlingGame();
-        for(int i = 0; i < numFrames; i++){
-            bowlingGame.roll(firstPinNum);
-            bowlingGame.roll(secondPinNum);
-        }
-        return bowlingGame.getScore();
+    BowlingGame bowlingGame;
+    int numFrames = 10;
+    @BeforeEach
+    void constructGame(){
+        bowlingGame = new BowlingGame();
     }
 
     @Test
     void strikeAll(){
-        assertEquals(300, allRollsEq(10, 12));
+        for(int i = 0; i < numFrames; i++)
+            bowlingGame.rollStrike();
+        bowlingGame.rollBonus(10);
+        bowlingGame.rollBonus(10);
+        assertEquals(300, bowlingGame.getScore());
     }
 
     @Test
     void nineAndMissAll(){
-        assertEquals(90, allRollsNotEq(9, 0, 10));
+        for(int i = 0; i < numFrames; i++)
+            bowlingGame.rollDefault(9,0);
+        assertEquals(90, bowlingGame.getScore());
     }
 
     @Test
     void fiveAndSpareAll(){
-        assertEquals(150, allRollsEq(5, 21));
+        for(int i = 0; i < numFrames; i++)
+            bowlingGame.rollSpare(5,5);
+        bowlingGame.rollBonus(5);
+        assertEquals(150, bowlingGame.getScore());
     }
 
     @Test
     void missAll(){
-        assertEquals(0, allRollsEq(0, 20));
+        for(int i = 0; i < numFrames; i++)
+            bowlingGame.rollDefault(0,0);
+        assertEquals(0, bowlingGame.getScore());
     }
 
 }

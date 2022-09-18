@@ -1,7 +1,7 @@
-package org.example;
+package org.example.Frame;
 
 // a frame has two rolls to knock down all pins
-public class Frame {
+abstract public class Frame {
 
     private int score = 0;
     private String scoreIndicator;
@@ -9,9 +9,7 @@ public class Frame {
     public Frame() {
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+    public abstract void setScore(int score);
 
     public int getScore() {
         return score;
