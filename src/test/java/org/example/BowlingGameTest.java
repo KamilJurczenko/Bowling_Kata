@@ -56,4 +56,7 @@ class BowlingGameTest {
         assertEquals(20, BowlingGame.rollCount);
     }
 
+    // TODO Random valid input test
+    //@RepeatedTest()
+
 }
